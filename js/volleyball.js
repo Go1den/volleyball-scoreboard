@@ -15,9 +15,12 @@ function resetScores() {
 function onClicky(e) {
     console.log(e);
     let middle = window.innerHeight / 2;
-    if (e.clientY > middle) {
+    let give = Math.floor(window.innerHeight * .15);
+    if (e.clientY > middle + give) {
         changeScore(e.srcElement.id, -1);
-    } else {
+    } else if (e.clientY < middle - give) {
         changeScore(e.srcElement.id, 1);
+    } else {
+        console.log("dead zone");
     }
 }
